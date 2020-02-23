@@ -69,5 +69,13 @@ bindkey '^e' edit-command-line
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
+# Enable vim yank-paste in normal mode
+vi-append-x-selection () { RBUFFER=$(xsel -o -p </dev/null)$RBUFFER; }
+zle -N vi-append-x-selection
+bindkey -a '^p' vi-append-x-selection
+vi-yank-x-selection () { print -rn -- $CUTBUFFER | xsel -i -p; }
+zle -N vi-yank-x-selection
+bindkey -a '^y' vi-yank-x-selection
+
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
