@@ -8,8 +8,10 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 #if not root get root rights and rerun the script with usrhome enviroment variable 
 if [ $EUID != 0 ]; then
-    USRHOME="$(echo ${HOME})"
+    USRHOME=${HOME}
+    _USER=${USER}
     export USRHOME
+    export _USER
     sudo -E "$0" "$@"
     exit $?
 fi
@@ -50,7 +52,8 @@ fi
 cp $DIR/.zshrc $USRHOME
 cp -r $DIR/i3 $USRHOME
 
-usermod --shell /usr/bin/zsh $USER
+#make zshell default
+usermod --shell /usr/bin/zsh $_USER
 
 #torrent client
 dnf install transmission-daemon
@@ -59,14 +62,14 @@ systemctl stop transmission-daemon
 systemctl disable transmission-daemon.service 
 
 #change folder to which transmission downloads files
-sed -i -E "s/(.*\"download-dir\": \"\/home\/)(.*)(\/Downloads\",$)/\1$USER\3/" $DIR/transmission/settings.json
+sed -i -E "s/(.*\"download-dir\": \"\/home\/)(.*)(\/Downloads\",$)/\1$_USER\3/" $DIR/transmission/settings.json
 cp $DIR/transmission/settings.json /var/lib/transmission/.config/transmission-daemon/
 #give service user permissions so it can write to ~/Downloads
 if ! [ -d "$USRHOME/Downloads" ]; then 
     mkdir "$USRHOME/Downloads"
 fi
 
-sed -i "s/User=.*$/User=$USER/" $DIR/transmission/transmission-daemon.service
+sed -i "s/User=.*$/User=$_USER/" $DIR/transmission/transmission-daemon.service
 cp $DIR/transmission/transmission-daemon.service /usr/lib/systemd/system/transmission-daemon.service
 #restart the daemon
 systemctl enable transmission-daemon.service 
