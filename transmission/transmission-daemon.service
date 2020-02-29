@@ -3,7 +3,7 @@ Description=Transmission BitTorrent Daemon
 After=network.target
 
 [Service]
-User=gleb
+User=root
 Type=notify
 ExecStart=/usr/bin/transmission-daemon -f --log-error
 ExecReload=/bin/kill -s HUP $MAINPID
