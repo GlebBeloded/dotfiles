@@ -86,4 +86,9 @@ dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-rel
 dnf install akmod-nvidia -y
 fi
 
+#messangers
+sudo curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stable/skype-stable.repo
+sudo dnf install -y skypeforlinux telegram-desktop
+
+
 exit 0
