@@ -56,21 +56,27 @@ cp -r $DIR/i3 $USRHOME
 usermod --shell /usr/bin/zsh $_USER
 
 #torrent client
-dnf install transmission-daemon
+dnf install  -y transmission-daemon
 #stop it in order to substitute config files
 systemctl stop transmission-daemon
 systemctl disable transmission-daemon.service 
 
 #change folder to which transmission downloads files
 sed -i -E "s/(.*\"download-dir\": \"\/home\/)(.*)(\/Downloads\",$)/\1$_USER\3/" $DIR/transmission/settings.json
-cp $DIR/transmission/settings.json /var/lib/transmission/.config/transmission-daemon/
+#create directory if it does not exist
+if ! [ -d "/var/lib/transmission/.config/transmission-daemon" ]; then
+    mkdir -p /var/lib/transmission/.config/transmission-daemon
+fi
+cp  $DIR/transmission/settings.json /var/lib/transmission/.config/transmission-daemon/
 #give service user permissions so it can write to ~/Downloads
 if ! [ -d "$USRHOME/Downloads" ]; then 
     mkdir "$USRHOME/Downloads"
 fi
-
 sed -i "s/User=.*$/User=$_USER/" $DIR/transmission/transmission-daemon.service
-cp $DIR/transmission/transmission-daemon.service /usr/lib/systemd/system/transmission-daemon.service
+if ! [ -d "/usr/lib/systemd/system" ]; then
+    mkdir -p /usr/lib/systemd/system
+fi
+cp  $DIR/transmission/transmission-daemon.service /usr/lib/systemd/system/
 #restart the daemon
 systemctl enable transmission-daemon.service 
 systemctl start transmission-daemon
