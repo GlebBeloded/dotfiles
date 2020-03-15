@@ -79,3 +79,6 @@ bindkey -a '^y' vi-yank-x-selection
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+#add golang to path
+PATH=$PATH:~/go/bin

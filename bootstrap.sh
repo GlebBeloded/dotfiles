@@ -56,7 +56,8 @@ dnf install -y rofi
 
 #move dotfiles
 cp $DIR/.zshrc $USRHOME
-cp -r $DIR/i3 $USRHOME
+cp $DIR/.Xresources $USRHOME
+cp -r $DIR/config/* $USRHOME/.config/
 
 #make zshell default
 usermod --shell /usr/bin/zsh $_USER
