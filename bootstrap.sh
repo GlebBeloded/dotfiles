@@ -18,7 +18,12 @@ fi
 
 #install all my stuff
 dnf update -y && dnf upgrade -y
-dnf install -y gcc make cmake g++ go vim zsh
+dnf install -y gcc make cmake g++ go vim zsh zathura zathura-plugins-all jq picom feh polybar mpd
+#polybar dependencies
+dnf install -y xcb-util-xrm-devel xcb-proto xcb-util-devel xcb-util-wm-devel xcb-util-cursor-devel xcb-util-image-devel alsa-lib-devel pulseaudio-libs-devel i3-ipc i3-devel jsoncpp-devel libmpdclient-devel libcurl-devel wireless-tools-devel libnl3-devel cairo-devel
+#install fonts
+$DIR/fonts.sh
+fc-cache -f -v
 
 #install vscode
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -43,10 +48,11 @@ dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-releas
 dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
 dnf -y install ffmpeg ffmpeg-devel
 
-#install i3
+#install i3 and all the stuff it needs
 if ! [ -x "$(command -v i3)" ]; then
     $DIR/i3_install.sh
 fi
+dnf install -y rofi
 
 #move dotfiles
 cp $DIR/.zshrc $USRHOME
