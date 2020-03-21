@@ -132,3 +132,6 @@ systemctl start docker.service
 dnf copr enable skidnik/termite -y
 dnf install termite -y
 rm /etc/xdg/termite/config
+#zsh history file
+mkdir -p $USERHOME/cache/zsh
+touch $USERHOME/cache/zsh/history
