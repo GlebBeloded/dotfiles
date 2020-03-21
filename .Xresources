@@ -4,4 +4,4 @@ rofi.color-window: argb:40000000, #7c8389, #98beff
 rofi.color-normal: argb:031d1f21, #ffffff, argb:031d1f21, argb:c998beff,  #ffffff
 rofi.color-urgent: argb:031d1f21, #ffffff, argb:bc303541, argb:031d1f21, #8e4ceb
 rofi.color-active: argb:031d1f21, #ffffff, argb:031d1f21, argb:031d1f21, #8e4ceb
-rofi.font: Noto Sans Regular 15
+rofi.font: Inconsolata Regular 15

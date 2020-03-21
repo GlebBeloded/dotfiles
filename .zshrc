@@ -81,4 +81,4 @@ bindkey -a '^y' vi-yank-x-selection
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 #add golang to path
-PATH=$PATH:~/go/bin
+PATH=$PATH:~/go/bin 

@@ -18,7 +18,7 @@ fi
 
 #install all my stuff
 dnf update -y && dnf upgrade -y
-dnf install -y gcc make cmake g++ go vim zsh zathura zathura-plugins-all jq picom feh polybar mpd
+dnf install -y gcc make cmake g++ go vim zsh zathura zathura-plugins-all jq picom feh polybar webshark
 #polybar dependencies
 dnf install -y xcb-util-xrm-devel xcb-proto xcb-util-devel xcb-util-wm-devel xcb-util-cursor-devel xcb-util-image-devel alsa-lib-devel pulseaudio-libs-devel i3-ipc i3-devel jsoncpp-devel libmpdclient-devel libcurl-devel wireless-tools-devel libnl3-devel cairo-devel
 #install fonts
@@ -52,7 +52,11 @@ dnf -y install ffmpeg ffmpeg-devel
 if ! [ -x "$(command -v i3)" ]; then
     $DIR/i3_install.sh
 fi
+# my dmenu replacement
 dnf install -y rofi
+# compton from source (tryone version with better blur)
+$DIR/compton.sh
+
 
 #move dotfiles
 cp $DIR/.zshrc $USRHOME
@@ -104,4 +108,27 @@ sudo curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stabl
 sudo dnf install -y skypeforlinux telegram-desktop
 
 
-exit 0
+#install mpd
+dnf install -y mpd mpc ncmpcpp
+mkdir $USERHOME/.config/mpd/playlists
+touch $USERHOME/.config/mpd/database 
+touch $USERHOME/.config/mpd/log     
+touch $USERHOME/.config/mpd/pid
+touch $USERHOME/.config/mpd/config
+touch $USERHOME/.config/mpd/sticker.sql
+python3 -m pip install Mopidy-GMusic
+python3 -m pip install Mopidy-MPD
+python3 -m pip install Mopidy-Iris
+#python3 -m pip install 'git+https://github.com/belak/mopidy@add-download-flag-to-playbin#egg=mopidy' --upgrade
+
+#docker stuff
+dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+dnf makecache
+dnf install docker-ce -y
+systemctl enable docker.service
+systemctl start docker.service
+
+#termite
+dnf copr enable skidnik/termite -y
+dnf install termite -y
+rm /etc/xdg/termite/config

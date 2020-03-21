@@ -1,3 +1,5 @@
 !.gitignore
 i3-gaps
 siji
+compton
+termite
