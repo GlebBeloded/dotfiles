@@ -18,9 +18,11 @@ fi
 
 #install all my stuff
 dnf update -y && dnf upgrade -y
-dnf install -y gcc make cmake g++ go vim zsh zathura zathura-plugins-all jq picom feh polybar webshark
+dnf install -y gcc make cmake g++ go vim-X11 zsh zathura zathura-plugins-all jq picom feh polybar webshark
 #polybar dependencies
-dnf install -y xcb-util-xrm-devel xcb-proto xcb-util-devel xcb-util-wm-devel xcb-util-cursor-devel xcb-util-image-devel alsa-lib-devel pulseaudio-libs-devel i3-ipc i3-devel jsoncpp-devel libmpdclient-devel libcurl-devel wireless-tools-devel libnl3-devel cairo-devel
+dnf install -y xcb-util-xrm-devel xcb-proto xcb-util-devel xcb-util-wm-devel xcb-util-cursor-devel \
+xcb-util-image-devel alsa-lib-devel pulseaudio-libs-devel i3-ipc i3-devel jsoncpp-devel \
+libmpdclient-devel libcurl-devel wireless-tools-devel libnl3-devel cairo-devel i3
 #install fonts
 $DIR/fonts.sh
 fc-cache -f -v
@@ -48,10 +50,6 @@ dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-releas
 dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
 dnf -y install ffmpeg ffmpeg-devel
 
-#install i3 and all the stuff it needs
-if ! [ -x "$(command -v i3)" ]; then
-    $DIR/i3_install.sh
-fi
 # my dmenu replacement
 dnf install -y rofi
 # compton from source (tryone version with better blur)
@@ -107,20 +105,6 @@ fi
 sudo curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stable/skype-stable.repo
 sudo dnf install -y skypeforlinux telegram-desktop
 
-
-#install mpd
-dnf install -y mpd mpc ncmpcpp
-mkdir $USERHOME/.config/mpd/playlists
-touch $USERHOME/.config/mpd/database 
-touch $USERHOME/.config/mpd/log     
-touch $USERHOME/.config/mpd/pid
-touch $USERHOME/.config/mpd/config
-touch $USERHOME/.config/mpd/sticker.sql
-python3 -m pip install Mopidy-GMusic
-python3 -m pip install Mopidy-MPD
-python3 -m pip install Mopidy-Iris
-#python3 -m pip install 'git+https://github.com/belak/mopidy@add-download-flag-to-playbin#egg=mopidy' --upgrade
-
 #docker stuff
 dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 dnf makecache
@@ -135,3 +119,16 @@ rm /etc/xdg/termite/config
 #zsh history file
 mkdir -p $USERHOME/cache/zsh
 touch $USERHOME/cache/zsh/history
+
+
+# messy docker install on fedora docker
+dnf -y install dnf-plugins-core
+dnf config-manager \
+    --add-repo \
+    https://download.docker.com/linux/fedora/docker-ce.repo
+dnf install docker-ce docker-ce-cli containerd.io -y
+grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
+systemctl enable docker
+#give docker root rights
+groupadd docker
+usermod -aG docker $_USER

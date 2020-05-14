@@ -12,4 +12,5 @@ git clone https://github.com/stark/siji && cd siji
 ./install.sh
 #copy all fonts to destination folder
 cp -r $DIR/assets/fonts/.  /usr/share/fonts
-dnf install levien-inconsolata-fonts
+
+dnf install levien-inconsolata-fonts -y

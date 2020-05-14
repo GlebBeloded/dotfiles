@@ -77,8 +77,22 @@ vi-yank-x-selection () { print -rn -- $CUTBUFFER | xsel -i -p; }
 zle -N vi-yank-x-selection
 bindkey -a '^y' vi-yank-x-selection
 
-# Load zsh-syntax-highlighting; should be last.
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+#enable copy and paste to system clipboard by aliasing gvim as vim
+alias vim='gvim -v'
 
 #add golang to path
+export GOPATH=$HOME/go
 PATH=$PATH:~/go/bin 
+PATH=$PATH:~/.local/bin
+PATH=$PATH:/usr/local/go/bin
+export PATH
+export GOBIN=$GOPATH/bin
+export GO111MODULE=on
+
+# Load zsh-syntax-highlighting; should be last.
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+RABBIT=amqp://ggmjxdkq:HJQ4N7gABKrLDWoneYwr0M-qZZDconkO@clam.rmq.cloudamqp.com/ggmjxdkq
+GRAPHQL=https://map-of-zones-graphql.herokuapp.com/v1/graphql
+export RABBIT
+export GRAPHQL
+postgres="postgres://iybxwwinjzwufi:73646df062a546d8255841793da93e3d1ba20a17eeb9d0717c9cdaddff218fd9@ec2-34-233-186-251.compute-1.amazonaws.com:5432/d9rccb2hbkg6vc"

@@ -2,7 +2,8 @@
 allow_bold = true
 bold_is_bright = true
 clickable_url = true
-font = Inconsolata 12  
+font = Cascadia Mono 11
+ 
 [colors]
 background = rgba(16, 19, 24, 0.5)
 
