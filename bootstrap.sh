@@ -23,6 +23,11 @@ dnf install -y gcc make cmake g++ go vim-X11 zsh zathura zathura-plugins-all jq 
 dnf install -y xcb-util-xrm-devel xcb-proto xcb-util-devel xcb-util-wm-devel xcb-util-cursor-devel \
 xcb-util-image-devel alsa-lib-devel pulseaudio-libs-devel i3-ipc i3-devel jsoncpp-devel \
 libmpdclient-devel libcurl-devel wireless-tools-devel libnl3-devel cairo-devel i3
+
+#rust tui system monitor, very pretty
+dnf copr enable atim/ytop -y
+dnf install ytop -y
+
 #install fonts
 $DIR/fonts.sh
 fc-cache -f -v
@@ -43,6 +48,10 @@ fi
 
 dnf check-update
 dnf install -y code
+
+#install rust
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+
 
 #firefox drivers
 dnf install -y gstreamer1 
@@ -101,7 +110,7 @@ dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-rel
 dnf install akmod-nvidia -y
 fi
 
-#messangers
+# messangers
 sudo curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stable/skype-stable.repo
 sudo dnf install -y skypeforlinux telegram-desktop
 
@@ -112,11 +121,12 @@ dnf install docker-ce -y
 systemctl enable docker.service
 systemctl start docker.service
 
-#termite
-dnf copr enable skidnik/termite -y
-dnf install termite -y
-rm /etc/xdg/termite/config
-#zsh history file
+# simple terminal
+git clone https://github.com/GlebBeloded/st.git st
+cd st
+make install
+cd ..
+# zsh history file
 mkdir -p $USERHOME/cache/zsh
 touch $USERHOME/cache/zsh/history
 
