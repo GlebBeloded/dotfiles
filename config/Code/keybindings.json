@@ -93,11 +93,11 @@
         "command": "-workbench.action.closeActiveEditor"
     },
     {
-        "key": "ctrl+l",
+        "key": "alt+l",
         "command": "workbench.action.focusNextGroup"
     },
     {
-        "key": "ctrl+h",
+        "key": "alt+h",
         "command": "workbench.action.focusPreviousGroup"
     },
     {
@@ -123,20 +123,10 @@
     },
     {
         "key": "ctrl+j",
-        "command": "breadcrumbs.selectFocused",
-        "when": "breadcrumbsActive && breadcrumbsVisible"
-    },
-    {
-        "key": "down",
-        "command": "-breadcrumbs.selectFocused",
-        "when": "breadcrumbsActive && breadcrumbsVisible"
-    },
-    {
-        "key": "ctrl+j",
         "command": "-workbench.action.togglePanel"
     },
     {
-        "key": "ctrl+j",
+        "key": "alt+j",
         "command": "selectNextSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
@@ -146,7 +136,7 @@
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
     {
-        "key": "ctrl+l",
+        "key": "alt+k",
         "command": "selectPrevSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
@@ -156,7 +146,7 @@
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
     {
-        "key": "ctrl+j",
+        "key": "alt+j",
         "command": "list.focusDown",
         "when": "listFocus && !inputFocus"
     },
@@ -166,7 +156,7 @@
         "when": "listFocus && !inputFocus"
     },
     {
-        "key": "ctrl+k",
+        "key": "alt+k",
         "command": "list.focusUp",
         "when": "listFocus && !inputFocus"
     },
@@ -180,12 +170,12 @@
         "command": "-workbench.action.files.newUntitledFile"
     },
     {
-        "key": "ctrl+f",
+        "key": "alt+f",
         "command": "explorer.newFile",
         "when": "filesExplorerFocus"
     },
     {
-        "key": "ctrl+d",
+        "key": "alt+d",
         "command": "explorer.newFolder",
         "when": "filesExplorerFocus"
     },
@@ -199,7 +189,7 @@
         "command": "-workbench.view.debug"
     },
     {
-        "key": "ctrl+shift+d",
+        "key": "shift+alt+d",
         "command": "moveFileToTrash",
         "when": "explorerResourceMoveableToTrash && explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
     },
@@ -209,7 +199,7 @@
         "when": "explorerResourceMoveableToTrash && explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
     },
     {
-        "key": "ctrl+e",
+        "key": "alt+e",
         "command": "workbench.view.explorer"
     },
     {
