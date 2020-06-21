@@ -46,6 +46,11 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc
 EOF
 fi
 
+#install vscode extensions
+while read ext; do
+  code --install-extnesion $ext
+done < $DIR/config/Code/extensions
+
 dnf check-update
 dnf install -y code
 

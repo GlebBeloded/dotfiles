@@ -245,5 +245,15 @@
     {
         "key": "ctrl+shift+f",
         "command": "-workbench.action.findInFiles"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "workbench.action.terminal.resizePaneDown",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+k",
+        "command": "workbench.action.terminal.resizePaneUp",
+        "when": "terminalFocus"
     }
 ]
