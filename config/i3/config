@@ -41,7 +41,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite 
+bindsym $mod+Return exec st 
 
 # kill focused window
 bindsym $mod+q kill
@@ -180,7 +180,7 @@ for_window [class="^.*"] border pixel 2
 
 #languages
 exec setxkbmap -layout us,ru -option 'grp:win_space_toggle'
-# exec setxkbmap
+exec_always --no-startup-id xset r rate 400 30
 #set caps lock to be escape and vice-versa
 exec_always --no-startup-id xmodmap -e "clear lock"
 exec_always --no-startup-id xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock"
@@ -211,8 +211,6 @@ exec --no-startup-id i3-msg 'workspace $ws1; exec vk'
 exec_always --no-startup-id compton
 #set wallpaper
 exec_always --no-startup-id feh --bg-fill ~/.config/wallpaper
-#mpd-mopidy google play music
-exec --no-startup-id mopidy 
 
 
 # screenshot stuff
