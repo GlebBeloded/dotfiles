@@ -1,7 +1,7 @@
 {
     "diffEditor.ignoreTrimWhitespace": false,
     "workbench.editor.enablePreview": false,
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "go.formatTool": "gofmt",
     "platformio-ide.disablePIOHomeStartup": true,
     "workbench.editor.showTabs": true,

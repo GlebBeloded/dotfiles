@@ -8,7 +8,7 @@ rofi.font: Cascadia Regular 15
 *.font: Cascadia Mono:pixelsize=14:antialias=true:autohint=true
 
 
-*.alpha: 0.8
+*.alpha: 0.9
 
 ! special
 *.foreground:   #bbc5ff
