@@ -74,8 +74,6 @@ $DIR/compton.sh
 cp $DIR/.Xresources $USRHOME
 cp -r $DIR/config/* $USRHOME/.config/
 
-#make zshell default
-usermod --shell /usr/bin/zsh $_USER
 
 #torrent client
 dnf install  -y transmission-daemon
@@ -135,7 +133,8 @@ cd $DIR
 # move zshrc 
 cp $DIR/.zshrc $USRHOME
 cp $DIR/.zshrc /root/
-# make zsh default
+#make zshell default
+usermod --shell /usr/bin/zsh $_USER
 # zsh history file
 mkdir -p $USERHOME/cache/zsh
 touch $USERHOME/cache/zsh/history
