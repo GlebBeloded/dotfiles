@@ -71,7 +71,6 @@ $DIR/compton.sh
 
 
 #move dotfiles
-cp $DIR/.zshrc $USRHOME
 cp $DIR/.Xresources $USRHOME
 cp -r $DIR/config/* $USRHOME/.config/
 
@@ -127,13 +126,23 @@ systemctl enable docker.service
 systemctl start docker.service
 
 # simple terminal
-git clone https://github.com/GlebBeloded/st.git st
-cd st
+git clone https://github.com/GlebBeloded/st.git /tmp/st
+cd /tmp/st
 make install
-cd ..
+cd $DIR
+
+# zsh related stuff
+# move zshrc 
+cp $DIR/.zshrc $USRHOME
+cp $DIR/.zshrc /root/
+# make zsh default
 # zsh history file
 mkdir -p $USERHOME/cache/zsh
 touch $USERHOME/cache/zsh/history
+# zsh syntax highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /tmp/zsh-syntax
+cd /tmp/zsh-syntax && make install
+cd $DIR
 
 
 # messy docker install on fedora docker
