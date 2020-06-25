@@ -22,7 +22,7 @@ dnf install -y gcc make cmake g++ go vim-X11 zsh zathura zathura-plugins-all jq 
 #polybar dependencies
 dnf install -y xcb-util-xrm-devel xcb-proto xcb-util-devel xcb-util-wm-devel xcb-util-cursor-devel \
 xcb-util-image-devel alsa-lib-devel pulseaudio-libs-devel i3-ipc i3-devel jsoncpp-devel \
-libmpdclient-devel libcurl-devel wireless-tools-devel libnl3-devel cairo-devel i3
+libmpdclient-devel libcurl-devel wireless-tools-devel libnl3-devel cairo-devel i3 vifm
 
 #rust tui system monitor, very pretty
 dnf copr enable atim/ytop -y
@@ -155,3 +155,8 @@ systemctl enable docker
 #give docker root rights
 groupadd docker
 usermod -aG docker $_USER
+
+# vifm config
+git clone https://github.com/cirala/vifmimg.git /tmp/vifmimg
+sudo cp ./{vifmimg,vifmrun} /usr/bin
+cd $DIR
