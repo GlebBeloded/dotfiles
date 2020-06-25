@@ -144,7 +144,7 @@ cd /tmp/zsh-syntax && make install
 cd $DIR
 
 
-# messy docker install on fedora docker
+# messy docker install on fedora
 dnf -y install dnf-plugins-core
 dnf config-manager \
     --add-repo \
@@ -156,7 +156,20 @@ systemctl enable docker
 groupadd docker
 usermod -aG docker $_USER
 
-# vifm config
-git clone https://github.com/cirala/vifmimg.git /tmp/vifmimg
-sudo cp ./{vifmimg,vifmrun} /usr/bin
+# lf and stuff to use with it
+go get -u github.com/gokcehan/lf
+# dependencies for image/video previews
+dnf install -y python3-devel poppler ffmpedthumbnailer
+pip3 install ueberzug Pillow
+git clone https://github.com/marianosimone/epub-thumbnailer.git /tmp/epub
+cd /tmp/epub 
+python install.py install
 cd $DIR
+git clone https://github.com/sdushantha/fontpreview /tmp/fontpreview
+cd /tmp/fontpreview
+make install
+cd $DIR
+
+# install preview stuff
+git clone https://github.com/cirala/lfimg.git /tmp/lfimg
+cp /tmp/lfimg/lfrun /usr/bin
