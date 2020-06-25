@@ -1,9 +1,17 @@
-#Borrowed from https://github.com/LukeSmithxyz/voidrice/blob/master/.config/zsh/.zshrc 
-# Luke's config for the Zoomer Shell
-
 # Enable colors and change prompt:
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+# terminal prompt
+PROMPT="%(?..%F{red}✘ )%B%F{yellow}[%F{magenta}%~%F{yellow}] %(!.%F{red}%B▶ .%F{green}%B▶ "
+
+# right prompt with git info
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+zstyle ':vcs_info:git:*' formats "%F{yellow} %b"
+zstyle ':vcs_info:*' enable git
+RPROMPT=\$vcs_info_msg_0_
 
 # History in cache directory:
 HISTSIZE=10000
@@ -11,6 +19,7 @@ SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
 # Basic auto/tab complete:
+fpath=(~/.config/zsh/completions $fpath)
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
@@ -65,10 +74,6 @@ bindkey -s '^o' 'lfcd\n'
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# Load aliases and shortcuts if existent.
-[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
-[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
-
 # Enable vim yank-paste in normal mode
 vi-append-x-selection () { RBUFFER=$(xsel -o -p </dev/null)$RBUFFER; }
 zle -N vi-append-x-selection
@@ -78,7 +83,7 @@ zle -N vi-yank-x-selection
 bindkey -a '^y' vi-yank-x-selection
 
 #enable copy and paste to system clipboard by aliasing gvim as vim
-alias vim='gvim -v'
+alias vim='nvim'
 
 #add golang to path
 export GOPATH=$HOME/go
@@ -92,9 +97,11 @@ export GO111MODULE=on
 #add rust to path
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# Load zsh-syntax-highlighting; should be last.
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 # Woohoo, weather!
-
 alias weather="curl wttr.in"
+# Woohoo, pointless map!
 alias map="telnet mapscii.me"
+
+# Load zsh-syntax-highlighting; should be last.
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
