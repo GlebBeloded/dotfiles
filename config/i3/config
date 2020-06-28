@@ -46,6 +46,9 @@ bindsym $mod+Return exec st
 # kill focused window
 bindsym $mod+q kill
 
+# disable mouse-based window focus
+focus_follows_mouse no
+
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -92,16 +95,16 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+# bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -174,51 +177,82 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# start top bar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+# set border width to 2px
 for_window [class="^.*"] border pixel 2
 
-#languages
+# languages
 exec setxkbmap -layout us,ru -option 'grp:win_space_toggle'
 exec_always --no-startup-id xset r rate 400 30
-#set caps lock to be escape and vice-versa
+# set caps lock to be escape and vice-versa
 exec_always --no-startup-id xmodmap -e "clear lock"
 exec_always --no-startup-id xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock"
 exec_always --no-startup-id xmodmap -e "keycode 66 = Escape NoSymbol Escape"
 
-#basic rofi setup
+# basic rofi setup
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons -kb-mode-next "super_l+d"
-#brightness and volume bindings
+# brightness and volume bindings
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 20; notify-send 'Brightness up'"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 20; notify-send 'Brightness down'"
 
 
-#mouse keybindings
+# mouse keybindings
 bindsym --whole-window button2 floating toggle
 bindsym button6 --whole-window exec "amixer set Master 10%+; notify-send 'Volume up'"
 bindsym button7 --whole-window exec "amixer set Master 10%-; notify-send 'Volume down'"
 
-#start firefox on startup in the background
+# start firefox on startup in the background
 exec --no-startup-id i3-msg 'workspace $ws2; exec firefox; workspace $ws1'
-#start messangers on home window
+# start messangers on home window
 exec --no-startup-id i3-msg 'workspace $ws1; exec skypeforlinux'
 exec --no-startup-id i3-msg 'workspace $ws1; exec telegram-desktop'
 exec --no-startup-id i3-msg 'workspace $ws1; exec skypeforlinux'
 exec --no-startup-id i3-msg 'workspace $ws1; exec vk'
 
-#run compton
+# run compton
 exec_always --no-startup-id compton
-#set wallpaper
+# set wallpaper
 exec_always --no-startup-id feh --bg-fill ~/.config/wallpaper
 
 
 # screenshot stuff
-#interactive screenshot by pressing printscreen
+# interactive screenshot by pressing printscreen
 bindsym Print --release exec gnome-screenshot 
-#crop-area screenshot by pressing Mod + printscreen
+# crop-area screenshot by pressing Mod + printscreen
 bindsym $mod+Print exec gnome-screenshot -w
 
-#audio
-#this is only needed because my system is weird
+# audio
+# this is only needed because my system is weird
 exec_always --no-startup-id pacmd unload-module module-udev-detect && pacmd load-module module-udev-detect
+
+
+# colors
+#                 name     resource     fallback       
+set_from_resource $color0  i3wm.color0  #000000
+set_from_resource $color1  i3wm.color1  #000000
+set_from_resource $color2  i3wm.color2  #000000
+set_from_resource $color3  i3wm.color3  #000000
+set_from_resource $color4  i3wm.color4  #000000
+set_from_resource $color5  i3wm.color5  #000000
+set_from_resource $color6  i3wm.color6  #000000
+set_from_resource $color7  i3wm.color7  #000000
+set_from_resource $color8  i3wm.color8  #000000
+set_from_resource $color9  i3wm.color9  #000000
+set_from_resource $color10 i3wm.color10 #000000
+set_from_resource $color11 i3wm.color11 #000000
+set_from_resource $color12 i3wm.color12 #000000
+set_from_resource $color13 i3wm.color13 #000000
+set_from_resource $color14 i3wm.color14 #000000
+set_from_resource $color15 i3wm.color15 #000000
+
+# indicator color always matches child_border color because indicator annoys me
+# class                 border   backgr.  text     indicator  child_border
+client.focused          $color0  $color7  $color0  $color2    $color2
+client.unfocused        $color0  $color7  $color0  $color4    $color4
+client.focused_inactive $color0  $color7  $color0  $color4    $color4
+client.urgent           $color0  $color7  $color0  $color1    $color1
+client.placeholder      $color0  $color0  $color0  $color0    $color0
+client.background       $color0

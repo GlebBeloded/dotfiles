@@ -101,7 +101,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 alias weather="curl wttr.in"
 # Woohoo, pointless map!
 alias map="telnet mapscii.me"
+# alias for file manager
+alias files="lfrun"
 
 # Load zsh-syntax-highlighting; should be last.
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
