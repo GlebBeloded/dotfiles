@@ -1,5 +1,5 @@
 asvetliakov.vscode-neovim
-golang.Go
+golang.go
 mads-hartmann.bash-ide-vscode
 matklad.rust-analyzer
 ms-azuretools.vscode-docker
@@ -7,6 +7,8 @@ ms-python.python
 ms-vscode.cmake-tools
 ms-vscode.cpptools
 ms-vsliveshare.vsliveshare
+rust-lang.rust
 serayuzgur.crates
 streetsidesoftware.code-spell-checker
 twxs.cmake
+vadimcn.vscode-lldb

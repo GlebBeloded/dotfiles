@@ -207,10 +207,10 @@ bindsym button7 --whole-window exec "amixer set Master 10%-; notify-send 'Volume
 # start firefox on startup in the background
 exec --no-startup-id i3-msg 'workspace $ws2; exec firefox; workspace $ws1'
 # start messangers on home window
-exec --no-startup-id i3-msg 'workspace $ws1; exec skypeforlinux'
 exec --no-startup-id i3-msg 'workspace $ws1; exec telegram-desktop'
 exec --no-startup-id i3-msg 'workspace $ws1; exec skypeforlinux'
 exec --no-startup-id i3-msg 'workspace $ws1; exec vk'
+exec --no-startup-id i3-msg 'workspace $ws1; exec Discord'
 
 # run compton
 exec_always --no-startup-id compton

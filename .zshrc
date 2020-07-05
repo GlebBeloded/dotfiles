@@ -103,6 +103,8 @@ alias weather="curl wttr.in"
 alias map="telnet mapscii.me"
 # alias for file manager
 alias files="lfrun"
+# TODO:remove
+EDITOR=nvim
 
 # Load zsh-syntax-highlighting; should be last.
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)

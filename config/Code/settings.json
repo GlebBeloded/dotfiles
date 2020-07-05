@@ -28,6 +28,8 @@
         "editorRuler.foreground": "#007acc"
     },
     "cSpell.userWords": [
+        "Beloded",
+        "Debugf",
         "Debugln",
         "Dotfiles",
         "Errorln",
@@ -45,11 +47,16 @@
         "gaiacli",
         "graphql",
         "hasura",
+        "isready",
         "mapofzones",
+        "mutexed",
         "opengl",
+        "pidof",
         "postgres",
         "rabbitmq",
-        "sigc"
+        "rabbitmqctl",
+        "sigc",
+        "struct"
     ],
     "go.buildOnSave": "off",
     "go.installDependenciesWhenBuilding": false,
@@ -61,5 +68,6 @@
     "extensions.ignoreRecommendations": false,
     "vscode-neovim.useCtrlKeysForNormalMode": false,
     "telemetry.enableTelemetry": false,
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "C_Cpp.updateChannel": "Insiders"
 }

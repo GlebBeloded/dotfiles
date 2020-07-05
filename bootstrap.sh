@@ -22,7 +22,7 @@ dnf install -y gcc make cmake g++ go vim-X11 zsh zathura zathura-plugins-all jq 
 #polybar dependencies
 dnf install -y xcb-util-xrm-devel xcb-proto xcb-util-devel xcb-util-wm-devel xcb-util-cursor-devel \
 xcb-util-image-devel alsa-lib-devel pulseaudio-libs-devel i3-ipc i3-devel jsoncpp-devel \
-libmpdclient-devel libcurl-devel wireless-tools-devel libnl3-devel cairo-devel i3 vifm
+libmpdclient-devel libcurl-devel wireless-tools-devel libnl3-devel cairo-devel i3 vifm newsboat
 
 #rust tui system monitor, very pretty
 dnf copr enable atim/ytop -y
@@ -58,11 +58,12 @@ dnf install -y code
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 
 
-#firefox drivers
+# browser video drivers
 dnf install -y gstreamer1 
 dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y
 dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
 dnf -y install ffmpeg ffmpeg-devel
+dnf install -y firefox
 
 # my dmenu replacement
 dnf install -y rofi
