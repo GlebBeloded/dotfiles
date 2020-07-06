@@ -180,8 +180,8 @@ bindsym $mod+r mode "resize"
 # start top bar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
-# set border width to 2px
-for_window [class="^.*"] border pixel 2
+# set border width to npx
+for_window [class="^.*"] border pixel 4
 
 # languages
 exec setxkbmap -layout us,ru -option 'grp:win_space_toggle'
@@ -248,9 +248,8 @@ set_from_resource $color13 i3wm.color13 #000000
 set_from_resource $color14 i3wm.color14 #000000
 set_from_resource $color15 i3wm.color15 #000000
 
-# indicator color always matches child_border color because indicator annoys me
 # class                 border   backgr.  text     indicator  child_border
-client.focused          $color0  $color7  $color0  $color2    $color2
+client.focused          $color0  $color7  $color0  $color5    $color2
 client.unfocused        $color0  $color7  $color0  $color4    $color4
 client.focused_inactive $color0  $color7  $color0  $color4    $color4
 client.urgent           $color0  $color7  $color0  $color1    $color1
