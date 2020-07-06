@@ -22,5 +22,5 @@ rustup update
 rustup completions zsh > $DIR/config/zsh/completions/_rust
 
 # vifm config
-cp -r /home/gleb/.config/lf/ $DIR/config/lf
+cp -r /home/gleb/.config/lf $DIR/config/
 

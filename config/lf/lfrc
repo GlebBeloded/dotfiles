@@ -1,1 +1,7 @@
+set preview true
 set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
+
+set drawbox true
+set info 'size:time'
+set nohidden true

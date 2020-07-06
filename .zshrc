@@ -102,7 +102,7 @@ alias weather="curl wttr.in"
 # Woohoo, pointless map!
 alias map="telnet mapscii.me"
 # alias for file manager
-alias files="lfrun"
+alias files="lfrun.sh"
 # TODO:remove
 EDITOR=nvim
 

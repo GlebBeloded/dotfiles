@@ -126,20 +126,16 @@ systemctl enable docker
 groupadd docker
 usermod -aG docker $_USER
 
-# lf and stuff to use with it
-go get -u github.com/gokcehan/lf
+# lf and stuff which has to do with image previews
+# install lf
+git clone https://github.com/Provessor/lf.git /tmp/lf
+cd /tmp/lf
+go install
+cd $DIR
+
 # dependencies for image/video previews
 dnf install -y python3-devel poppler ffmpedthumbnailer
 pip3 install ueberzug Pillow
-git clone https://github.com/marianosimone/epub-thumbnailer.git /tmp/epub
-cd /tmp/epub 
-python install.py install
-cd $DIR
-git clone https://github.com/sdushantha/fontpreview /tmp/fontpreview
-cd /tmp/fontpreview
-make install
-cd $DIR
 
-# install preview stuff
-git clone https://github.com/cirala/lfimg.git /tmp/lfimg
-cp /tmp/lfimg/lfrun /usr/bin
+# move scripts to /usr/local 
+cp $DIR/local/* /usr/local/
