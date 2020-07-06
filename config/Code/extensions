@@ -1,4 +1,5 @@
 asvetliakov.vscode-neovim
+bungcip.better-toml
 golang.go
 mads-hartmann.bash-ide-vscode
 matklad.rust-analyzer
@@ -9,6 +10,7 @@ ms-vscode.cpptools
 ms-vsliveshare.vsliveshare
 rust-lang.rust
 serayuzgur.crates
+slevesque.shader
 streetsidesoftware.code-spell-checker
 twxs.cmake
 vadimcn.vscode-lldb
