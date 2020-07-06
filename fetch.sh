@@ -2,7 +2,6 @@
 # fetch script is used to grab everything from the environment and put it in git folder to commit
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-DIR=$DIR/../..
 
 /bin/cp /home/gleb/.config/i3/config $DIR/config/i3/
 /bin/cp /home/gleb/.Xresources $DIR
