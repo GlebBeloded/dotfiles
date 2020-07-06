@@ -22,7 +22,7 @@ dnf install -y gcc make cmake g++ go vim-X11 zsh zathura zathura-plugins-all jq 
 #polybar dependencies
 dnf install -y xcb-util-xrm-devel xcb-proto xcb-util-devel xcb-util-wm-devel xcb-util-cursor-devel \
 xcb-util-image-devel alsa-lib-devel pulseaudio-libs-devel i3-ipc i3-devel jsoncpp-devel \
-libmpdclient-devel libcurl-devel wireless-tools-devel libnl3-devel cairo-devel i3 vifm newsboat mpv
+libcurl-devel wireless-tools-devel libnl3-devel cairo-devel i3 vifm newsboat mpv
 
 #rust tui system monitor, very pretty
 dnf copr enable atim/ytop -y
@@ -85,10 +85,6 @@ dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$
 dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
 dnf install akmod-nvidia -y
 fi
-
-# messangers
-sudo curl -o /etc/yum.repos.d/skype-stable.repo https://repo.skype.com/rpm/stable/skype-stable.repo
-sudo dnf install -y skypeforlinux telegram-desktop
 
 #docker stuff
 dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
