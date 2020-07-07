@@ -24,6 +24,10 @@ dnf install -y xcb-util-xrm-devel xcb-proto xcb-util-devel xcb-util-wm-devel xcb
 xcb-util-image-devel alsa-lib-devel pulseaudio-libs-devel i3-ipc i3-devel jsoncpp-devel \
 libcurl-devel wireless-tools-devel libnl3-devel cairo-devel i3 vifm newsboat mpv
 
+# install swallow script for i3
+git clone https://github.com/jamesofarrell/i3-swallow.git /tmp/swallow
+cp /tmp/swallow/swallow /usr/local/bin
+
 #rust tui system monitor, very pretty
 dnf copr enable atim/ytop -y
 dnf install ytop -y
@@ -57,7 +61,6 @@ dnf install -y code
 #install rust
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 
-
 # browser video drivers
 dnf install -y gstreamer1 
 dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y
@@ -69,7 +72,6 @@ dnf install -y firefox
 dnf install -y rofi
 # compton from source (tryone version with better blur)
 $DIR/compton.sh
-
 
 #move dotfiles
 cp $DIR/.Xresources $USRHOME
@@ -133,7 +135,7 @@ cd /tmp/lf
 go install
 cd $DIR
 
-# dependencies for image/video previews
+# dependencies for image/video previews in lf
 dnf install -y python3-devel poppler ffmpedthumbnailer
 pip3 install ueberzug Pillow
 
