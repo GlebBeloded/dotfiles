@@ -14,7 +14,7 @@
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
     "editor.fontLigatures": true,
-    "editor.fontFamily": "'Cascadia',monospace,'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Cascadia code',monospace,'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "go.coverOnSingleTestFile": true,
     "go.lintOnSave": "workspace",
     "go.useCodeSnippetsOnFunctionSuggest": true,

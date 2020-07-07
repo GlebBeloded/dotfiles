@@ -87,6 +87,8 @@ alias weather="curl wttr.in"
 alias map="telnet mapscii.me"
 # alias for file manager
 alias lf="lfrun.sh"
+# colorful top
+alias top=ytop
 
 # Load zsh-syntax-highlighting; should be last.
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
