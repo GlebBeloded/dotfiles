@@ -89,18 +89,6 @@ bindkey -a '^y' vi-yank-x-selection
 #enable copy and paste to system clipboard by aliasing gvim as vim
 alias vim='nvim'
 
-#add golang to path
-export GOPATH=$HOME/go
-PATH=$PATH:~/go/bin 
-PATH=$PATH:~/.local/bin
-PATH=$PATH:/usr/local/go/bin
-export PATH
-export GOBIN=$GOPATH/bin
-export GO111MODULE=on
-
-#add rust to path
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # Woohoo, weather!
 alias weather="curl wttr.in"
 # Woohoo, pointless map!

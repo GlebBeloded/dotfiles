@@ -8,7 +8,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 /bin/cp /home/gleb/.config/wallpaper $DIR/config/
 /bin/cp /home/gleb/.config/compton.conf $DIR/config/
 /bin/cp -r /home/gleb/.config/polybar/ $DIR/config/
-/bin/cp /home/gleb/.zshrc $DIR
+/bin/cp /home/gleb/{.zprofile,.zshrc} $DIR
 /bin/cp -r /home/gleb/.config/Code/User/keybindings.json $DIR/config/Code/keybindings.json
 /bin/cp -r /home/gleb/.config/Code/User/settings.json $DIR/config/Code/settings.json
 /bin/cp -r /home/gleb/.newsboat/{urls,config} $DIR/config/newsboat

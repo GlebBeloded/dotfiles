@@ -102,8 +102,9 @@ make install
 cd $DIR
 
 # zsh related stuff
-# move zshrc 
-cp $DIR/.zshrc $USRHOME
+# move zshrc and zprofile home 
+cp $DIR/{.zprofile, .zshrc} $USRHOME
+# also move .zshrc to root home, because I want root prompt to be the same as main prompt
 cp $DIR/.zshrc /root/
 #make zshell default
 usermod --shell /usr/bin/zsh $_USER
