@@ -3,7 +3,6 @@
     "workbench.editor.enablePreview": false,
     "window.zoomLevel": 0,
     "go.formatTool": "gofmt",
-    "platformio-ide.disablePIOHomeStartup": true,
     "workbench.editor.showTabs": true,
     "editor.lineNumbers": "relative",
     "window.menuBarVisibility": "toggle",
@@ -25,7 +24,7 @@
         119
     ],
     "workbench.colorCustomizations": {
-        "editorRuler.foreground": "#007acc"
+        "editorRuler.foreground": "#8357a8",
     },
     "cSpell.userWords": [
         "Beloded",
@@ -70,5 +69,6 @@
     "vscode-neovim.useCtrlKeysForNormalMode": false,
     "telemetry.enableTelemetry": false,
     "explorer.confirmDelete": false,
-    "C_Cpp.updateChannel": "Insiders"
+    "C_Cpp.updateChannel": "Insiders",
+    "workbench.colorTheme": "Spacemacs - dark"
 }
