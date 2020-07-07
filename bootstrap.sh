@@ -16,17 +16,28 @@ if [ $EUID != 0 ]; then
     exit $?
 fi
 
+# Ensure ~/.local exists
+if ![-f $USRHOME/.local];then
+  mkdir $USRHOME/.local
+fi
+
+# Ensure the base-devel package group is installed in full 
+pacman -S --needed base-devel --noconfirm
+pacman -Syu --noconfirm
+
+# Install fonts I use
+pacman -S --noconfirm nerd-fonts-complete
+
 #install all my stuff
-dnf update -y && dnf upgrade -y
 dnf install -y gcc make cmake g++ go vim-X11 zsh zathura zathura-plugins-all jq picom feh polybar webshark
 #polybar dependencies
 dnf install -y xcb-util-xrm-devel xcb-proto xcb-util-devel xcb-util-wm-devel xcb-util-cursor-devel \
 xcb-util-image-devel alsa-lib-devel pulseaudio-libs-devel i3-ipc i3-devel jsoncpp-devel \
-libcurl-devel wireless-tools-devel libnl3-devel cairo-devel i3 vifm newsboat mpv unclutter
+libcurl-devel wireless-tools-devel libnl3-devel cairo-devel i3 vifm newsboat mpv unclutter code
 
 # install swallow script for i3
 git clone https://github.com/jamesofarrell/i3-swallow.git /tmp/swallow
-cp /tmp/swallow/swallow /usr/local/bin
+/usr/bin/cp /tmp/swallow/swallow $USRHOME/.local/bin/
 
 #rust tui system monitor, very pretty
 dnf copr enable atim/ytop -y
@@ -35,20 +46,6 @@ dnf install ytop -y
 #install fonts
 $DIR/fonts.sh
 fc-cache -f -v
-
-#install vscode
-rpm --import https://packages.microsoft.com/keys/microsoft.asc
-#vscode repo
-if [ ! -f "/etc/yum.repos.d/vscode.repo" ]; then
-cat <<EOF | tee /etc/yum.repos.d/vscode.repo
-[code]
-name=Visual Studio Code
-baseurl=https://packages.microsoft.com/yumrepos/vscode
-enabled=1
-gpgcheck=1
-gpgkey=https://packages.microsoft.com/keys/microsoft.asc
-EOF
-fi
 
 #install vscode extensions
 while read ext; do
@@ -141,8 +138,4 @@ dnf install -y python3-devel poppler ffmpedthumbnailer
 pip3 install ueberzug Pillow
 
 # move everything to local
-if ![-f $USRHOME/.local];then
-  mkdir $USRHOME/.local
-fi
-
 cp $DIR/local/* $USRHOME/.local/
