@@ -1,14 +1,8 @@
+# Visual stuff
 # Enable colors and change prompt:
 autoload -U colors && colors
-
-# just in case because of weird autocompletion bugs
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-
 # terminal prompt
 PROMPT="%(?..%F{red}✘ )%B%F{yellow}[%F{magenta}%~%F{yellow}] %(!.%F{red}%B▶ .%F{green}%B▶ "
-
 # right prompt with git info
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -18,10 +12,8 @@ zstyle ':vcs_info:git:*' formats "%F{yellow} %b"
 zstyle ':vcs_info:*' enable git
 RPROMPT=\$vcs_info_msg_0_
 
-# History in cache directory:
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
+# Load aliases
+source ~/.config/zsh/aliasrc
 
 # Basic auto/tab complete:
 fpath=(~/.config/zsh/completions $fpath)

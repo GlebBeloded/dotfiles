@@ -22,7 +22,7 @@ code --list-extensions > $DIR/config/Code/extensions
 
 # zsh stuff
 /bin/cp -r /home/gleb/{.zprofile,.zshrc} $DIR
-/bin/cp -r /home/gleb/.config/zsh/{aliasrc,zsh-syntax-highlighting.zsh} $DIR/config/zsh/
+/bin/cp -r /home/gleb/.config/zsh/aliasrc $DIR/config/zsh/
 # update zsh auto-completion scripts
 git clone https://github.com/zsh-users/zsh-completions.git /tmp/zsh-completions
 cp -r /tmp/zsh-completions/src/{_cmake,_cppcheck,_golang,_openssl,_xinput} $DIR/config/zsh/completions
