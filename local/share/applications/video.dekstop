@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Video viewer
+Exec=~/.local/bin/swallow /usr/bin/mpv %u

@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Image viewer
+Exec=~/local/bin/swallow /usr/bin/feh --start-at %u --scale-down --auto-zoom --auto-rotate --image-bg black
