@@ -1,6 +1,11 @@
 # Enable colors and change prompt:
 autoload -U colors && colors
 
+# just in case because of weird autocompletion bugs
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+
 # terminal prompt
 PROMPT="%(?..%F{red}✘ )%B%F{yellow}[%F{magenta}%~%F{yellow}] %(!.%F{red}%B▶ .%F{green}%B▶ "
 
@@ -24,7 +29,6 @@ autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
-_comp_options+=(globdots)		# Include hidden files.
 
 # vi mode
 bindkey -v
@@ -102,9 +106,7 @@ alias weather="curl wttr.in"
 # Woohoo, pointless map!
 alias map="telnet mapscii.me"
 # alias for file manager
-alias files="lfrun.sh"
-# TODO:remove
-EDITOR=nvim
+alias lf="lfrun.sh"
 
 # Load zsh-syntax-highlighting; should be last.
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
