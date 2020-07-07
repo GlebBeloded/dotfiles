@@ -140,5 +140,9 @@ cd $DIR
 dnf install -y python3-devel poppler ffmpedthumbnailer
 pip3 install ueberzug Pillow
 
-# move scripts to /usr/local 
-cp $DIR/local/bin/* /usr/local/
+# move everything to local
+if ![-f $USRHOME/.local];then
+  mkdir $USRHOME/.local
+fi
+
+cp $DIR/local/* $USRHOME/.local/
