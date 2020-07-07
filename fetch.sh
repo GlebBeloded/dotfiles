@@ -12,8 +12,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # wallpaper that I use
 /bin/cp ~/.config/wallpaper $DIR/config/
 
-# compton config
-/bin/cp ~/.config/compton.conf $DIR/config/
+# picom config
+/bin/cp ~/.config/picom.conf $DIR/config/
 
 # polybar config
 /bin/cp -r ~/.config/polybar/ $DIR/config/
