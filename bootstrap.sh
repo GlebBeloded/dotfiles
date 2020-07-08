@@ -10,14 +10,16 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 export DIR
 
 # User space installs
-# top bar
-$DIR/install.sh https://aur.archlinux.org/polybar.git /tmp/polybar
-# font collection
-$DIR/install.sh https://aur.archlinux.org/nerd-fonts-complete.git /tmp/nerd
-# top replacement
-$DIR/install.sh https://aur.archlinux.org/ytop.git /tmp/ytop
+if [ $EUID != 0 ]; then
+     # top bar
+     $DIR/install.sh https://aur.archlinux.org/polybar.git /tmp/polybar
+     # bunch of fonts, weights alot, probably must be replcaed
+     $DIR/install.sh https://aur.archlinux.org/nerd-fonts-complete.git /tmp/nerd
+     # top replacement
+     $DIR/install.sh https://aur.archlinux.org/ytop.git /tmp/ytop
+fi
 
-#if not root get root rights and rerun the script with usr and usrhome enviroment variable 
+# if not root get root rights and rerun the script with usr and usrhome enviroment variable 
 if [ $EUID != 0 ]; then
     USRHOME=${HOME}
     _USER=${USER}
@@ -30,6 +32,8 @@ fi
 # Ensure ~/.local exists
 if [ ! -d $USRHOME/.local ];then
   mkdir $USRHOME/.local
+  mkdir $USRHOME/.local/bin
+  mkdir $USRHOME/.local/share
 fi
 
 # Ensure ~/.config exists
@@ -60,14 +64,14 @@ pacman -S --noconfirm feh mpv newsboat zathura zathura-pdf-mupdf zathura-djvu
 
 # install swallow script for i3
 git clone https://github.com/jamesofarrell/i3-swallow.git /tmp/swallow
-/usr/bin/cp --parents /tmp/swallow/swallow $USRHOME/.local/bin/
+/usr/bin/cp /tmp/swallow/swallow $USRHOME/.local/bin/
 
 #install vscode extensions
-while read ext; do
-  code --install-extnesion $ext
-done < $DIR/config/Code/extensions
+# while read ext; do
+ # code --install-extnesion $ext
+# done < $DIR/config/Code/extensions
 
-# simple terminal
+simple terminal
 git clone https://github.com/GlebBeloded/st.git /tmp/st
 cd /tmp/st
 make install
@@ -75,9 +79,9 @@ cd $DIR
 
 # zsh related stuff
 # move zshrc and zprofile home 
-/usr/bin/cp $DIR/{.zprofile, .zshrc} $USRHOME
+/usr/bin/cp $DIR/{.zprofile,.zshrc} $USRHOME
 # also move .zshrc to root home, because I want root prompt to be the same as main prompt
-/usr/bincp $DIR/.zshrc /root/
+/usr/bin/cp $DIR/.zshrc /root/
 #make zshell default
 usermod --shell /usr/bin/zsh $_USER
 # zsh history file
@@ -103,4 +107,4 @@ pip3 install ueberzug Pillow
 /usr/bin/cp -r $DIR/config/* $USRHOME/.config/
 
 # move some programs and configs to ~/.local
-/usr/bin/cp $DIR/local/* $USRHOME/.local/
+/usr/bin/cp -r $DIR/local/* $USRHOME/.local/
