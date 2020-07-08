@@ -99,6 +99,8 @@ if [ $EUID != 0 ]; then
   $DIR/aur_install.sh https://aur.archlinux.org/polybar.git /tmp/polybar
   # top replacement
   $DIR/aur_install.sh https://aur.archlinux.org/ytop.git /tmp/ytop
+  # font awesome
+  $DIR/aur_install.sh https://aur.archlinux.org/ttf-font-awesome-4.git /tmp/fa4
 
   # install swallow script for i3
   git clone https://github.com/jamesofarrell/i3-swallow.git /tmp/swallow
@@ -115,7 +117,7 @@ if [ $EUID != 0 ]; then
   cd /tmp/lf
   go build -o ~/.local/bin/lf
   cd $DIR
-  pip3 install ueberzug Pillow
+  pip3 install ueberzug Pillow i3ipc
 
   # zsh history file
   touch ~/.cache/zsh/history
