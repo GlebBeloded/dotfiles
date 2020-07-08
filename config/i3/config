@@ -129,9 +129,6 @@ for_window [class="^.*"] border pixel 4
 # basic rofi setup
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons -kb-mode-next "super_l+d"
 
-# launch top-bar
-exec_always --no-startup-id ~/.config/polybar/launch.sh
-
 # colors
 #                 name     resource     fallback       
 set_from_resource $color0  i3wm.color0  #000000

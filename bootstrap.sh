@@ -109,7 +109,7 @@ if [ $EUID != 0 ]; then
   #install vscode extensions
   while read ext; do
     code --install-extension $ext
-  done < $DIR/config/Code/extensions
+  done < $DIR/config/Code\ -\ OSS/extensions
 
   # lf and stuff which has to do with image previews
   # install lf

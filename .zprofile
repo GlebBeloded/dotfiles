@@ -13,7 +13,7 @@ export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/inputrc"
 
 # zsh history 
-export HISTFILE="${XDG_DATA_HOME:-$HOME/.cache}/zsh/history"
+export HISTFILE="$HOME/.cache/zsh/history"
 HISTSIZE=10000
 SAVEHIST=10000
 
