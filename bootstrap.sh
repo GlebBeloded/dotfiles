@@ -87,7 +87,7 @@ if [ $EUID != 0 ];then
 
   if [ ! -d ~/.cache ];then
     mkdir ~/.cache
-    if [ ! -d ~/.chache/zsh ];then
+    if [ ! -d ~/.cache/zsh ];then
       mkdir ~/.cache/zsh
     fi
   fi
@@ -121,14 +121,14 @@ if [ $EUID != 0 ]; then
   touch ~/.cache/zsh/history
 fi
 
-# move the actual dotfiles
+# move actual dotfiles
 if [ $EUID != 0 ];then
-  # zsh related stuff
   # move zshrc and zprofile home 
   /usr/bin/cp $DIR/{.zprofile,.zshrc} ~
 
-  # move dotfiles
+  # xorg stuff
   /usr/bin/cp $DIR/{.Xresources,.xprofile,.xinitrc} ~
+  # dotfiles
   /usr/bin/cp -r $DIR/config/* ~/.config/
 
   # move some programs and configs to ~/.local
