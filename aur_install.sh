@@ -3,5 +3,5 @@
 
 git clone $1 $2
 cd $2
-makepkg -si
+makepkg -si --noconfirm
 cd $DIR
