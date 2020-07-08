@@ -6,6 +6,16 @@ set -e
 
 #get path to script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# export DIR variable for install script
+export DIR
+
+# User space installs
+# top bar
+$DIR/install.sh https://aur.archlinux.org/polybar.git /tmp/polybar
+# font collection
+$DIR/install.sh https://aur.archlinux.org/nerd-fonts-complete.git /tmp/nerd
+# top replacement
+$DIR/install.sh https://aur.archlinux.org/ytop.git /tmp/ytop
 
 #if not root get root rights and rerun the script with usr and usrhome enviroment variable 
 if [ $EUID != 0 ]; then
@@ -18,43 +28,33 @@ if [ $EUID != 0 ]; then
 fi
 
 # Ensure ~/.local exists
-if [ ! -f $USRHOME/.local];then
+if [ ! -d $USRHOME/.local ];then
   mkdir $USRHOME/.local
 fi
 
 # Ensure ~/.config exists
-if [ ! -f $USRHOME/.config];then
+if [ ! -d $USRHOME/.config ];then
   mkdir $USRHOME/.config
 fi
-
-# export DIR variable for install script
-export DIR
-
+ 
 # Ensure the base-devel package group is installed in full 
 pacman -S --needed base-devel --noconfirm
 pacman -Syu --noconfirm
 
 # Install Desktop environment stuff
 pacman -S --noconfirm i3-wm unclutter picom rofi pulseaudio
-$DIR/install.sh https://aur.archlinux.org/polybar.git /tmp/polybar
-
-
-# Install fonts I use
-$DIR/install.sh https://aur.archlinux.org/nerd-fonts-complete.git /tmp/nerd
 
 # Install programming stuff
 # C, C++, Python, Go, Rust
 pacman -S --noconfirm gcc make cmake python python-pip go rust
 # Miscallenious stuff
 pacman -S --noconfirm neovim zsh jq code docker git
-pacman -S --noconfirm --asdeps $(pactree -l neovim)
-$DIR/install.sh https://aur.archlinux.org/ytop.git /tmp/ytop
-
+pacman -S --noconfirm --asdeps xclip xsel
 
 # Install browser
 pacman -S --noconfirm firefox
 # install all firefox optional dependencies to get media codecs
-pacman -S --asdeps --noconfirm $(pactree -l firefox)
+pacman -S --asdeps --noconfirm hunspell-en_US 
 # Install media stuff
 pacman -S --noconfirm feh mpv newsboat zathura zathura-pdf-mupdf zathura-djvu
 
