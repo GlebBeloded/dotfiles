@@ -3,11 +3,11 @@
 
 #crash on error
 set -e
-#user home path before we shitch to root
+
 #get path to script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-#if not root get root rights and rerun the script with usrhome enviroment variable 
+#if not root get root rights and rerun the script with usr and usrhome enviroment variable 
 if [ $EUID != 0 ]; then
     USRHOME=${HOME}
     _USER=${USER}
