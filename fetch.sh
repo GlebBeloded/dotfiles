@@ -19,9 +19,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 /bin/cp -r ~/.config/polybar/ $DIR/config/
 
 # vscode stuff
-/bin/cp -r ~/.config/Code/User/keybindings.json $DIR/config/Code/keybindings.json
-/bin/cp -r ~/.config/Code/User/settings.json $DIR/config/Code/settings.json
-code --list-extensions > $DIR/config/Code/extensions
+/bin/cp -r ~/.config/Code\ -\ OSS/User/keybindings.json $DIR/config/Code\ -\ OSS/User/keybindings.json
+/bin/cp -r ~/.config/Code\ -\ OSS/User/settings.json $DIR/config/Code\ -\ OSS/User/settings.json
+code --list-extensions > $DIR/config/Code\ -\ OSS/extensions
 
 # rss reader
 /bin/cp -r ~/.newsboat/{urls,config} $DIR/config/newsboat
