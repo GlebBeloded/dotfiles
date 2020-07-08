@@ -5,10 +5,10 @@ rofi.color-normal: argb:031d1f21, #ffffff, argb:031d1f21, argb:c998beff,  #fffff
 rofi.color-urgent: argb:031d1f21, #ffffff, argb:bc303541, argb:031d1f21, #8e4ceb
 rofi.color-active: argb:031d1f21, #ffffff, argb:031d1f21, argb:031d1f21, #8e4ceb
 rofi.font: Cascadia Regular 15
-*.font: Cascadia Mono:pixelsize=14:antialias=true:autohint=true
+*.font: Cascadia Code:pixelsize=14:antialias=true:autohint=true
 
 
-*.alpha: 0.9
+*.alpha: 0.7
 
 ! special
 *.foreground:   #bbc5ff
