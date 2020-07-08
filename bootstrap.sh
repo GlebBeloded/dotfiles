@@ -40,12 +40,13 @@ pacman -S --noconfirm nerd-fonts-complete
 # C, C++, Python, Go, Rust
 pacman -S --noconfirm gcc make cmake python python-pip go rust
 # Miscallenious stuff
-pacman -S --noconfirm nvim zsh jq code docker ytop
+pacman -S --noconfirm neovim zsh jq code docker ytop
+pacman -S --noconfirm --asdeps $(pactree -l neovim)
 
 # Install browser
 pacman -S --noconfirm firefox
 # install all firefox optional dependencies to get media codecs
-pacman -S --asdeps $(pactree -l firefox)
+pacman -S --asdeps --noconfirm $(pactree -l firefox)
 # Install media stuff
 pacman -S --noconfirm feh mpv newsboat zathura zathura-pdf-mupdf zathura-djvu
 
