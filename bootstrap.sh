@@ -11,9 +11,7 @@ export DIR
 
 # run script as root first, then run it as normal user
 if [ $EUID != 0 ]; then
-  USRHOME=${HOME}
   _USER=${USER}
-  export USRHOME
   export _USER
   sudo -E "$0" "$@"
 fi
@@ -46,6 +44,9 @@ if [ $EUID == 0 ]; then
   # dependencies for image/video previews in lf
   pacman -S --noconfirm poppler ffmpegthumbnailer w3m imagemagick
 
+  # fonts that I use
+  pacman -S --noconfirm terminus-font ttf-font-awesome ttf-cascadia-code
+
   # simple terminal
   git clone https://github.com/GlebBeloded/st.git /tmp/st
   cd /tmp/st
@@ -57,8 +58,9 @@ if [ $EUID == 0 ]; then
   cd /tmp/zsh-syntax && make install
   cd $DIR
 
-  # make zsh default
+  # make zsh default for user
   usermod --shell /usr/bin/zsh $_USER
+  # make zsh default for root
   usermod --shell /usr/bin/zsh $USER
 
   # move .zshrc to root home, because I want root prompt to be the same as main prompt
@@ -95,8 +97,6 @@ fi
 if [ $EUID != 0 ]; then
   # top bar
   $DIR/aur_install.sh https://aur.archlinux.org/polybar.git /tmp/polybar
-  # bunch of fonts, weights alot, probably must be replcaed
-  $DIR/aur_install.sh https://aur.archlinux.org/nerd-fonts-complete.git /tmp/nerd
   # top replacement
   $DIR/aur_install.sh https://aur.archlinux.org/ytop.git /tmp/ytop
 
