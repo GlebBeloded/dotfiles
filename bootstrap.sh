@@ -99,7 +99,7 @@ cd /tmp/lf
 go build -o $USRHOME/.local/bin/lf
 cd $DIR
 # dependencies for image/video previews in lf
-pacman -S --noconfirm poppler ffmpegthumbnailer
+pacman -S --noconfirm poppler ffmpegthumbnailer w3m imagemagick
 pip3 install ueberzug Pillow
 
 # move dotfiles
