@@ -6,6 +6,7 @@ set -e
 #user home path before we shitch to root
 #get path to script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 #if not root get root rights and rerun the script with usrhome enviroment variable 
 if [ $EUID != 0 ]; then
     USRHOME=${HOME}
@@ -17,31 +18,38 @@ if [ $EUID != 0 ]; then
 fi
 
 # Ensure ~/.local exists
-if ![-f $USRHOME/.local];then
+if [ ! -f $USRHOME/.local];then
   mkdir $USRHOME/.local
 fi
 
 # Ensure ~/.config exists
-if ![-f $USRHOME/.config];then
+if [ ! -f $USRHOME/.config];then
   mkdir $USRHOME/.config
 fi
+
+# export DIR variable for install script
+export DIR
 
 # Ensure the base-devel package group is installed in full 
 pacman -S --needed base-devel --noconfirm
 pacman -Syu --noconfirm
 
 # Install Desktop environment stuff
-pacman -S --noconfirm i3-wm polybar unclutter picom rofi pulseaudio
+pacman -S --noconfirm i3-wm unclutter picom rofi pulseaudio
+$DIR/install.sh https://aur.archlinux.org/polybar.git /tmp/polybar
+
 
 # Install fonts I use
-pacman -S --noconfirm nerd-fonts-complete
+$DIR/install.sh https://aur.archlinux.org/nerd-fonts-complete.git /tmp/nerd
 
 # Install programming stuff
 # C, C++, Python, Go, Rust
 pacman -S --noconfirm gcc make cmake python python-pip go rust
 # Miscallenious stuff
-pacman -S --noconfirm neovim zsh jq code docker ytop
+pacman -S --noconfirm neovim zsh jq code docker git
 pacman -S --noconfirm --asdeps $(pactree -l neovim)
+$DIR/install.sh https://aur.archlinux.org/ytop.git /tmp/ytop
+
 
 # Install browser
 pacman -S --noconfirm firefox
