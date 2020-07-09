@@ -22,6 +22,10 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 
+# zsh history 
+export HISTFILE="$HOME/.cache/zsh/history"
+HISTSIZE=10000
+SAVEHIST=10000
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1

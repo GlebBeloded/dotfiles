@@ -12,11 +12,6 @@ export LESSHISTFILE="-"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/inputrc"
 
-# zsh history 
-export HISTFILE="$HOME/.cache/zsh/history"
-HISTSIZE=10000
-SAVEHIST=10000
-
 # path to rust exectuables
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export PATH=$PATH:$CARGO_HOME/bin
@@ -38,3 +33,4 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
+startx&
