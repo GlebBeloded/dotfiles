@@ -41,3 +41,4 @@ cp -r ~/.config/lf $DIR/config/
 
 # xdg mime-open
 cp  ~/.config/mimeapps.list $DIR/config/
+cp -r ~/.local/share/applications/* $DIR/local/share/applications

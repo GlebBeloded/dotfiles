@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=PDF reader
-Exec=~/.local/bin/swallow /usr/bin/zathura %u
+Exec=swallow zathura %u
