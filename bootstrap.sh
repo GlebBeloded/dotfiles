@@ -42,7 +42,7 @@ if [ $EUID == 0 ]; then
   pacman -S --noconfirm feh mpv newsboat zathura zathura-pdf-mupdf zathura-djvu
 
   # dependencies for image/video previews in lf
-  pacman -S --noconfirm poppler ffmpegthumbnailer w3m imagemagick
+  pacman -S --noconfirm poppler ffmpegthumbnailer w3m imagemagick highlight
 
   # fonts that I use
   pacman -S --noconfirm terminus-font ttf-font-awesome ttf-cascadia-code
