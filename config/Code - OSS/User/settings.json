@@ -56,7 +56,8 @@
         "rabbitmq",
         "rabbitmqctl",
         "sigc",
-        "struct"
+        "struct",
+        "verticies"
     ],
     "go.buildOnSave": "off",
     "go.installDependenciesWhenBuilding": false,
@@ -70,5 +71,6 @@
     "telemetry.enableTelemetry": false,
     "explorer.confirmDelete": false,
     "C_Cpp.updateChannel": "Insiders",
-    "workbench.colorTheme": "Spacemacs - dark"
+    "workbench.colorTheme": "Spacemacs - dark",
+    "vim.foldfix": true,
 }
