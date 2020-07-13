@@ -93,6 +93,9 @@ alias map="telnet mapscii.me"
 alias lf="lfrun.sh"
 # colorful top
 alias top=ytop
+# reboot and shutdown stuff 
+alias shutdown="sudo runit-init 0"
+alias reboot="sudo runit-init 6"
 
 # Load zsh-syntax-highlighting; should be last.
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
