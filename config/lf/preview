@@ -43,7 +43,7 @@ function make_pdf {
 case $(file -b --mime-type "$1") in
     text/*)
 	draw_clear "$6"
-	cat "$1"
+	highlight -O ansi "$1" || cat "$1"
 	;;
     image/*)
 	hash_filename "$1" "$3" "${1##*.}"
