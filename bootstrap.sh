@@ -23,7 +23,7 @@ if [ $EUID == 0 ]; then
   pacman -Syu --noconfirm
 
   # Install Desktop environment stuff
-  pacman -S --noconfirm i3-wm unclutter picom rofi pulseaudio
+  pacman -S --noconfirm i3-wm i3lock unclutter picom rofi pulseaudio
 
   # Install programming stuff
   # C, C++, Python, Go, Rust
@@ -39,7 +39,7 @@ if [ $EUID == 0 ]; then
   pacman -S --asdeps --noconfirm hunspell-en_US 
   
   # Install media stuff
-  pacman -S --noconfirm feh mpv newsboat zathura zathura-pdf-mupdf zathura-djvu
+  pacman -S --noconfirm feh mpv newsboat zathura zathura-pdf-mupdf zathura-djvu translate-shell transmission-cli
 
   # dependencies for image/video previews in lf
   pacman -S --noconfirm poppler ffmpegthumbnailer w3m imagemagick highlight
@@ -101,6 +101,9 @@ if [ $EUID != 0 ]; then
   $DIR/aur_install.sh https://aur.archlinux.org/ytop.git /tmp/ytop
   # font awesome
   $DIR/aur_install.sh https://aur.archlinux.org/ttf-font-awesome-4.git /tmp/fa4
+
+  # transmission tui
+  $DIR/aur_install.sh https://aur.archlinux.org/transmission-remote-cli-git.git /tmp/tr-tui
 
   # install swallow script for i3
   git clone https://github.com/jamesofarrell/i3-swallow.git /tmp/swallow
