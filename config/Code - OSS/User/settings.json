@@ -73,4 +73,6 @@
     "C_Cpp.updateChannel": "Insiders",
     "workbench.colorTheme": "Spacemacs - dark",
     "vim.foldfix": true,
+    "rust-analyzer.cargo.allFeatures": true,
+    "rust-analyzer.checkOnSave.command": "clippy"
 }
