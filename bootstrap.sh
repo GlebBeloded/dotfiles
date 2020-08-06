@@ -44,7 +44,7 @@ if [ $EUID == 0 ]; then
   pacman -S --noconfirm poppler ffmpegthumbnailer w3m imagemagick highlight
 
   # fonts that I use
-  pacman -S --noconfirm terminus-font ttf-font-awesome ttf-cascadia-code
+  pacman -S --noconfirm terminus-font ttf-font-awesome ttf-cascadia-code ttf-dejavu ttf-liberation  noto-fonts-cjk noto-fonts-emoji noto-fonts
 
   # simple terminal
   git clone https://github.com/GlebBeloded/st.git /tmp/st
