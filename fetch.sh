@@ -23,9 +23,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 /bin/cp -r ~/.config/Code\ -\ OSS/User/settings.json $DIR/config/Code\ -\ OSS/User/settings.json
 code --list-extensions > $DIR/config/Code\ -\ OSS/extensions
 
-# rss reader
-/bin/cp -r ~/.newsboat/{urls,config} $DIR/config/newsboat
-
 # zsh stuff
 /bin/cp -r ~/{.zprofile,.zshrc} $DIR
 /bin/cp -r ~/.config/zsh/aliasrc $DIR/config/zsh/
