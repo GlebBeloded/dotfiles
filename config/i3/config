@@ -23,6 +23,8 @@ bindsym $mod+Return exec $TERMINAL
 # launch browser 
 bindsym $mod+Shift+Return exec $BROWSER
 
+# lock screen
+bindsym Ctrl+x exec betterlockscreen -l blur ~/.config/wallpaper
 
 # kill focused window
 bindsym $mod+q kill

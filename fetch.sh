@@ -18,6 +18,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # polybar config
 /bin/cp -r ~/.config/polybar/ $DIR/config/
 
+# lockscreen config
+/bin/cp ~/.config/betterlockscreenrc $DIR/config/
+
 # vscode stuff
 /bin/cp -r ~/.config/Code\ -\ OSS/User/keybindings.json $DIR/config/Code\ -\ OSS/User/keybindings.json
 /bin/cp -r ~/.config/Code\ -\ OSS/User/settings.json $DIR/config/Code\ -\ OSS/User/settings.json
