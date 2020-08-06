@@ -13,10 +13,14 @@ zstyle ':vcs_info:*' enable git
 RPROMPT=\$vcs_info_msg_0_
 
 # Load aliases
-source ~/.config/zsh/aliasrc
+if [ $EUID != 0 ]; then
+	source ~/.config/zsh/aliasrc
+fi
 
 # Basic auto/tab complete:
-fpath=(~/.config/zsh/completions $fpath)
+if [ $EUID != 0 ]; then
+	fpath=(~/.config/zsh/completions $fpath)
+fi
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist

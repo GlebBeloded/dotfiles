@@ -64,6 +64,10 @@ if [ $EUID == 0 ]; then
 
   # move .zshrc to root home, because I want root prompt to be the same as main prompt
   /usr/bin/cp $DIR/.zshrc /root/
+
+  # zsh history file
+  mkdir ~/.cache/zsh
+  touch ~/.cache/zsh/history
 fi
 
 # make sure all neccessary directories exist
