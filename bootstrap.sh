@@ -1,9 +1,5 @@
 #!/bin/bash
-#script to install all the basic stuff that I need
-
-#crash on error
-set -e
-
+#script to install all the basic stuff that I need #crash on error set -e 
 #get path to script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # export DIR variable for install script
@@ -22,8 +18,11 @@ if [ $EUID == 0 ]; then
   pacman -S --needed base-devel --noconfirm
   pacman -Syu --noconfirm
 
+  # AUR installer
+  pacman -S --noconfirm trizen
+
   # Install Desktop environment stuff
-  pacman -S --noconfirm i3-wm i3lock unclutter picom rofi pulseaudio
+  pacman -S --noconfirm i3-wm i3lock unclutter picom rofi pulseaudio xorg-xrandr arandr autorandr bc
 
   # Install programming stuff
   # C, C++, Python, Go, Rust
@@ -96,14 +95,13 @@ fi
 # User space installs
 if [ $EUID != 0 ]; then
   # top bar
-  $DIR/aur_install.sh https://aur.archlinux.org/polybar.git /tmp/polybar
+  trizen -S polybar --noconfirm
   # top replacement
-  $DIR/aur_install.sh https://aur.archlinux.org/ytop.git /tmp/ytop
+  trizen -S ytop --noconfirm
   # font awesome
-  $DIR/aur_install.sh https://aur.archlinux.org/ttf-font-awesome-4.git /tmp/fa4
-
-  # transmission tui
-  $DIR/aur_install.sh https://aur.archlinux.org/transmission-remote-cli-git.git /tmp/tr-tui
+  trizen -S ttf-font-awesome-4 --noconfirm
+  # lock screen
+  trizen -S betterlockscreen --noconfirm
 
   # install swallow script for i3
   git clone https://github.com/jamesofarrell/i3-swallow.git /tmp/swallow
