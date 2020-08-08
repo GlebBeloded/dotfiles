@@ -101,6 +101,23 @@ alias top=ytop
 alias shutdown="sudo runit-init 0"
 alias reboot="sudo runit-init 6"
 
+# close terminal when opening vscode
+function v() {
+	# clone if path is url
+	if [[ "$1" == http* || "$1" == git* || "$1" == ssh* ]];then
+		directory=${1##*/}
+		directory=${directory%%.git}
+		directory=/tmp/$directory
+		if [[ -d "$directory" ]]; then
+			rm -rf $directory &> /dev/null
+		fi
+		git clone $1 $directory --quiet
+		code $directory && exit
+	else
+		code $1 && exit
+	fi
+}
+
 # Load zsh-syntax-highlighting; should be last.
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
