@@ -6,7 +6,27 @@ set $mod Mod4
 
 # use polybar
 exec_always --no-startup-id polybarrun.sh
+exec_always --no-startup-id picom
+exec_always --no-startup-id blueman-applet
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id xfce4-power-manager
+exec_always --no-startup-id xfce4-notes
+exec_always --no-startup-id telegram-desktop
+exec_always --no-startup-id slack
 
+# wallpaper
+exec_always --no-startup-id feh --bg-fill ~/.config/wallpaper 
+
+# screenshot 
+bindsym $mod+Print exec \
+    import -window $( \
+        i3-msg -t get_tree | \
+        jq 'recurse(.nodes[]) | select(.focused).window' \
+    ) png:- | \
+    xclip -selection clipboard -t image/png
+
+# screen lock script
+exec_always --no-startup-id xss-lock -- betterlockscreen -l blur ~/.config/wallpaper
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -24,7 +44,7 @@ bindsym $mod+Return exec $TERMINAL
 bindsym $mod+Shift+Return exec $BROWSER
 
 # lock screen
-bindsym Ctrl+x exec betterlockscreen -l blur ~/.config/wallpaper
+bindsym $mod+x exec betterlockscreen -l blur ~/.config/wallpaper
 
 # kill focused window
 bindsym $mod+q kill
@@ -42,8 +62,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+v split h
-
+bindsym $mod+v split h 
 # split in vertical orientation
 bindsym $mod+c split v
 
@@ -100,6 +119,12 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# move workspace to another display
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+l move workspace to output right
+bindsym $mod+Ctrl+k move workspace to output up 
+bindsym $mod+Ctrl+j move workspace to output down 
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

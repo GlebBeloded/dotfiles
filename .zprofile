@@ -17,7 +17,7 @@ export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export PATH=$PATH:$CARGO_HOME/bin
 
 # golang environment
-export GOPATH=${XDG_DATA_HOME:-$HOME/.local/share}/go
+export GOPATH=~/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 export GO111MODULE=on
@@ -25,15 +25,11 @@ export GO111MODULE=on
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="firefox"
 export READER="zathura"
+export BROWSER="google-chrome-stable"
 
 # just in case some app needs it
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
-# start x server
-if [[ $(tty) == "/dev/pts/1" ]];then
-	startx&
-fi

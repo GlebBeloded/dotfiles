@@ -97,9 +97,6 @@ alias map="telnet mapscii.me"
 alias lf="lfrun.sh"
 # colorful top
 alias top=ytop
-# reboot and shutdown stuff 
-alias shutdown="sudo runit-init 0"
-alias reboot="sudo runit-init 6"
 
 # close terminal when opening vscode
 function v() {
@@ -117,6 +114,16 @@ function v() {
 		code $1 && exit
 	fi
 }
+
+source ~/.zprofile
+alias cl="tr -d '\n' | xsel -b"
+
+autoload -U +X bashcompinit && bashcompinit
+
+# work stuff
+if [ -f ~/.work.zsh ];then
+  source ~/.work.zsh
+fi
 
 # Load zsh-syntax-highlighting; should be last.
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)

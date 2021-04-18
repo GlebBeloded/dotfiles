@@ -32,8 +32,6 @@ if [ $EUID == 0 ]; then
   pacman -S --noconfirm neovim zsh jq code docker git man
   pacman -S --noconfirm --asdeps xclip xsel
 
-  # Install browser
-  pacman -S --noconfirm firefox
   # install all firefox optional dependencies to get media codecs
   pacman -S --asdeps --noconfirm hunspell-en_US 
   
@@ -98,6 +96,8 @@ fi
 
 # User space installs
 if [ $EUID != 0 ]; then
+  # Install browser
+  trizen -S --noconfirm google-chrome
   # top bar
   trizen -S polybar --noconfirm
   # top replacement
