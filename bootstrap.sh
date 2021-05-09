@@ -1,7 +1,7 @@
 #!/bin/bash
-#script to install all the basic stuff that I need #crash on error set -e 
+#script to install all the basic stuff that I need #crash on error set -e
 #get path to script
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 # export DIR variable for install script
 export DIR
 
@@ -11,10 +11,10 @@ if [ $EUID != 0 ]; then
   export _USER
   sudo -E "$0" "$@"
 fi
- 
+
 # installs which require root priveleges
 if [ $EUID == 0 ]; then
-  # Ensure the base-devel package group is installed in full 
+  # Ensure the base-devel package group is installed in full
   pacman -S --needed base-devel --noconfirm
   pacman -Syu --noconfirm
 
@@ -25,16 +25,18 @@ if [ $EUID == 0 ]; then
   pacman -S --noconfirm i3-wm i3lock unclutter picom rofi pulseaudio xorg-xrandr arandr autorandr bc
 
   # Install programming stuff
-  # C, C++, Python, Go, Rust
-  pacman -S --noconfirm gcc make cmake python python-pip go rust
-  
+  # C, C++, Python, Go, Rust, node
+  pacman -S --noconfirm gcc make cmake python python-pip go rust node npm
+  # npm directory access for non root use
+  chown -R "$_USER" /usr/local/lib/node_modules
+
   # Miscallenious stuff
   pacman -S --noconfirm neovim zsh jq code docker git man
   pacman -S --noconfirm --asdeps xclip xsel
 
   # install all firefox optional dependencies to get media codecs
-  pacman -S --asdeps --noconfirm hunspell-en_US 
-  
+  pacman -S --asdeps --noconfirm hunspell-en_US
+
   # Install media stuff
   pacman -S --noconfirm feh mpv newsboat zathura zathura-pdf-mupdf zathura-djvu translate-shell transmission-cli
 
@@ -42,7 +44,7 @@ if [ $EUID == 0 ]; then
   pacman -S --noconfirm poppler ffmpegthumbnailer w3m imagemagick highlight
 
   # fonts that I use
-  pacman -S --noconfirm terminus-font ttf-font-awesome ttf-cascadia-code ttf-dejavu ttf-liberation  noto-fonts-cjk noto-fonts-emoji noto-fonts
+  pacman -S --noconfirm terminus-font ttf-font-awesome ttf-cascadia-code ttf-dejavu ttf-liberation noto-fonts-cjk noto-fonts-emoji noto-fonts
 
   # simple terminal
   git clone https://github.com/GlebBeloded/st.git /tmp/st
@@ -69,26 +71,26 @@ if [ $EUID == 0 ]; then
 fi
 
 # make sure all neccessary directories exist
-if [ $EUID != 0 ];then 
+if [ $EUID != 0 ]; then
   # Ensure ~/.local exists
-  if [ ! -d ~/.local ];then
+  if [ ! -d ~/.local ]; then
     mkdir ~/.local
-    if [ ! -d ~/.local/bin ];then
-        mkdir ~/.local/bin
+    if [ ! -d ~/.local/bin ]; then
+      mkdir ~/.local/bin
     fi
-    if [ ! -d ~/.local/share ];then
+    if [ ! -d ~/.local/share ]; then
       mkdir ~/.local/share
     fi
   fi
 
   # Ensure ~/.config exists
-  if [ ! -d ~/.config ];then
+  if [ ! -d ~/.config ]; then
     mkdir ~/.config
   fi
 
-  if [ ! -d ~/.cache ];then
+  if [ ! -d ~/.cache ]; then
     mkdir ~/.cache
-    if [ ! -d ~/.cache/zsh ];then
+    if [ ! -d ~/.cache/zsh ]; then
       mkdir ~/.cache/zsh
     fi
   fi
@@ -114,7 +116,7 @@ if [ $EUID != 0 ]; then
   #install vscode extensions
   while read ext; do
     code --install-extension $ext
-  done < $DIR/config/Code\ -\ OSS/extensions
+  done <$DIR/config/Code\ -\ OSS/extensions
 
   # lf and stuff which has to do with image previews
   # install lf
@@ -129,8 +131,8 @@ if [ $EUID != 0 ]; then
 fi
 
 # move actual dotfiles
-if [ $EUID != 0 ];then
-  # move zshrc and zprofile home 
+if [ $EUID != 0 ]; then
+  # move zshrc and zprofile home
   /usr/bin/cp $DIR/{.zprofile,.zshrc} ~
 
   # xorg stuff
