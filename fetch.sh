@@ -28,13 +28,7 @@ code --list-extensions > $DIR/config/Code\ -\ OSS/extensions
 
 # zsh stuff
 /bin/cp -r ~/{.zprofile,.zshrc} $DIR
-/bin/cp -r ~/.config/zsh/aliasrc $DIR/config/zsh/
-# update zsh auto-completion scripts
-git clone https://github.com/zsh-users/zsh-completions.git /tmp/zsh-completions
-cp -r /tmp/zsh-completions/src/{_cmake,_cppcheck,_golang,_openssl,_xinput} $DIR/config/zsh/completions
-# rust completions
-rustup update
-rustup completions zsh > $DIR/config/zsh/completions/_rust
+/bin/cp -r ~/.config/zsh $DIR/config/
 
 # lf config and scripts
 cp -r ~/.config/lf $DIR/config/
@@ -45,3 +39,6 @@ cp -r ~/.local/share/applications/* $DIR/local/share/applications
 
 # zathura config
 cp -r  ~/.config/zathura $DIR/config/
+
+# alacritty config
+cp -r  ~/.config/alacritty/ $DIR/config/

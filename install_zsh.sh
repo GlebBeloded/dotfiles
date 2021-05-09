@@ -25,3 +25,4 @@ npm install --silent -g spaceship-prompt
 cp $SCRIPT_DIR/config/zsh/* ~/.config/zsh
 
 cp $SCRIPT_DIR/zshrc ~/.zshrc
+cp $SCRIPT_DIR/zprofile ~/.zprofile

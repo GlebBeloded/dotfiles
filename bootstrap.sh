@@ -52,22 +52,10 @@ if [ $EUID == 0 ]; then
   make install
   cd $DIR
 
-  # zsh syntax highlighting
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /tmp/zsh-syntax
-  cd /tmp/zsh-syntax && make install
-  cd $DIR
-
   # make zsh default for user
   usermod --shell /usr/bin/zsh $_USER
   # make zsh default for root
   usermod --shell /usr/bin/zsh $USER
-
-  # move .zshrc to root home, because I want root prompt to be the same as main prompt
-  /usr/bin/cp $DIR/.zshrc /root/
-
-  # zsh history file
-  mkdir ~/.cache/zsh
-  touch ~/.cache/zsh/history
 fi
 
 # make sure all neccessary directories exist
@@ -88,12 +76,6 @@ if [ $EUID != 0 ]; then
     mkdir ~/.config
   fi
 
-  if [ ! -d ~/.cache ]; then
-    mkdir ~/.cache
-    if [ ! -d ~/.cache/zsh ]; then
-      mkdir ~/.cache/zsh
-    fi
-  fi
 fi
 
 # User space installs
@@ -125,16 +107,10 @@ if [ $EUID != 0 ]; then
   go build -o ~/.local/bin/lf
   cd $DIR
   pip3 install ueberzug Pillow i3ipc
-
-  # zsh history file
-  touch ~/.cache/zsh/history
 fi
 
 # move actual dotfiles
 if [ $EUID != 0 ]; then
-  # move zshrc and zprofile home
-  /usr/bin/cp $DIR/{.zprofile,.zshrc} ~
-
   # xorg stuff
   /usr/bin/cp $DIR/{.Xresources,.xprofile,.xinitrc} ~
   # dotfiles
