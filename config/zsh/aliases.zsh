@@ -10,9 +10,9 @@ alias \
   rm="rm -vI" \
   mkd="mkdir -pv" \
   v=nvim \
-  ls='exa --icons -a --group-directories-first --color=always' \
+  ls='exa --icons -a --group-directories-first --color=auto' \
   tree='ls --tree' \
-  cat='bat --theme="TwoDark" --style="changes" --paging=never --color=always' \
+  cat='bat --theme="TwoDark" --style="changes" --paging=auto --color=auto' \
   cl="tr -d '\n' | xsel -b"
 
 # Pretty colors
