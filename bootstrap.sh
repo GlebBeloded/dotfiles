@@ -29,6 +29,7 @@ if [ $EUID == 0 ]; then
   pacman -S --noconfirm gcc make cmake python python-pip go rust node npm
   # npm directory access for non root use
   chown -R "$_USER" /usr/local/lib/node_modules
+  npm install --global yarn
 
   # Miscallenious stuff
   pacman -S --noconfirm neovim zsh jq code docker git man
