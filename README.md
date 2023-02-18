@@ -4,8 +4,6 @@ This repository is collections of dotfiles I personally use.
 The directory structure any scaffolding for many of my dotfiles were inspired by Luke Smith: https://github.com/LukeSmithxyz/voidrice .
 You should probably check out his dotfiles and his youtube channel.
 
-Currently I am using Artix(btw) and there is a bootstrap script for it if you want to try out my config.
-
 The dotfiles and programs here are centered around i3 and vim motions.
 
 ## Vscode bindings
